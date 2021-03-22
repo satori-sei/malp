@@ -1,0 +1,16 @@
+export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+export PAGER=less
+export PS1='\h:\w\$ '
+export run=/mnt/back/script
+export lab=/mnt/back
+umask 022
+
+alias ls='ls -aX'
+alias l='ls -lh'
+
+for script in /etc/profile.d/*.sh ; do
+        if [ -r $script ] ; then
+                . $script
+        fi
+done
+
