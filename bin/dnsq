@@ -1,4 +1,5 @@
 #!/bin/bash
+#   Dns query.
+#   Usage: dnsq
 ip=$(ifconfig eth0 | grep inet\ addr:* | cut -d ":" -f 2 | cut -d " " -f 1)
 tcpdump -tn src "${ip}" and port 53
-

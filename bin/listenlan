@@ -1,4 +1,5 @@
 #!/bin/bash
+#   Listening on lan excluding localhost packets.
+#   Usage: listenlan
 ip=$(ifconfig eth0 | grep inet\ addr:* | cut -d ":" -f 2 | cut -d " " -f 1)
 tcpdump -tn not src "${ip}" and not dst "${ip}"
-

@@ -1,0 +1,47 @@
+#!/bin/bash
+#	Network monitor.
+#	usage: netscan [sec]
+
+#alias grep='/system/xbin/grep'
+#alias netstat='/system/bin/netstat'
+
+while true;
+do clear;
+	#	fetch data
+	data=$(netstat -naltupe);
+	#	LISTEN
+	echo "   #  LISTENING";
+	echo "$data" | grep -e "LISTEN" -e "LISTENING" -e "\*"| sort -n -k9 -r;
+	#	SYN-SENT
+	echo "   #  SYN-SENT";
+	echo "$data" | grep -e "SYNC-SENT" -e "SYNC_SENT" -e "SYN_SENT" | sort -n -k9 -r;
+	#	SYN-RECEIVED
+	echo "   #  SYN-RECEIVED";
+	echo "$data" | grep -e "SYN-RECEIVED" -e "SYN_RECEIVED" -e "SYN_RCVD" | sort -n -k9 -r;
+	#	ESTABLISHED
+	echo "   #  ESTABLISHED";
+	echo "$data" | grep -e "ESTAB" -e "ESTABLISHED" | sort -n -k9 -r;
+	#	FIN-WAIT-1
+	echo "   #  FIN-WAIT-1";
+	echo "$data" | grep -e "FIN-WAIT-1" -e "FIN_WAIT_1" -e "FIN_WAIT1" | sort -n -k9 -r;
+	#	FIN-WAIT-2
+	echo "   #  FIN-WAIT-2";
+	echo "$data" | grep -e "FIN-WAIT-2" -e "FIN_WAIT_2" -e "FIN_WAIT2"| sort -n -k9 -r;
+	#	CLOSE-WAIT
+	echo "   #  CLOSE-WAIT";
+	echo "$data" | grep -e "CLOSE_WAIT" -e "CLOSE-WAIT" | sort -n -k9 -r;
+	#	CLOSING
+	echo "   #  CLOSING";
+	echo "$data" | grep "CLOSING" | sort -n -k9 -r;
+	#	LAST-ACK
+	echo "   #  LAST-ACK";
+	echo "$data" | grep -e "LAST-ACK" -e "LAST_ACK" | sort -n -k9 -r;
+	#	TIME-WAIT
+	echo "   #  TIME-WAIT";
+	echo "$data" | grep -e "TIME-WAIT" -e "TIME_WAIT" | sort -n -k9 -r;
+	#	CLOSED
+	echo "   #  CLOSED";
+	echo "$data" | grep "CLOSED" | sort -n -k9 -r;
+
+	sleep ${1};
+done
