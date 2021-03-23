@@ -112,7 +112,7 @@ cpstuff (){
 if [ $USER != 'root' ];
 then
     echo "You must be root to do this.";
-exit;
+    exit;
 else
     setup | tee ~/Install-1.log;
     fw | tee ~/fw.log;

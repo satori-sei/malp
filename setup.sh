@@ -29,7 +29,7 @@ setup () {
 if [ $USER != 'root' ];
 then
     echo "You must be root to do this.";
-exit;
+    exit;
 else
     pass; setup | tee ~/Install-0.log;
     #   give new user sudo permissions in /etc/sudoers
