@@ -1,15 +1,15 @@
 #!/bin/bash
 #	Network monitor.
-#	usage: netscan [sec]
+#	Usage: netscan [sec]
 
 #alias grep='/system/xbin/grep'
 #alias netstat='/system/bin/netstat'
 
 while true;
-do clear;
+	do clear;
 	#	fetch data
 	data=$(netstat -naltupe);
-	#	LISTEN
+	#	LISTENING
 	echo "   #  LISTENING";
 	echo "$data" | grep -e "LISTEN" -e "LISTENING" -e "\*"| sort -n -k9 -r;
 	#	SYN-SENT
@@ -42,6 +42,5 @@ do clear;
 	#	CLOSED
 	echo "   #  CLOSED";
 	echo "$data" | grep "CLOSED" | sort -n -k9 -r;
-
 	sleep ${1};
 done

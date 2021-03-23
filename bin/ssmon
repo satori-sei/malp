@@ -1,0 +1,36 @@
+#!/bin/bash
+#	Network monitor.
+#  	Usage: ssmon [sec]
+
+while true;
+    do clear;
+#	fetch data
+    data=$(ss -ae4np);
+#   PRINT TITLE
+    echo -e "$data" | grep "State";
+#   LISTENING - listening
+    echo -e "$data" | grep -e "LISTEN" -e "LISTENING"| sort -k7;
+#	SYN-SENT - syn-sent
+    echo -e "$data" | grep -e "SYNC-SENT" -e "SYNC_SENT" -e "SYN_SENT" | sort -k7;
+#	SYN-RECEIVED - syn-recv
+    echo -e "$data" | grep -e "SYN-RECEIVED" -e "SYN_RECEIVED" -e "SYN_RCVD" | sort -k7;
+#   ESTABLISHED uid - established
+    echo -e "$data" | grep -e "ESTAB" -e "ESTABLISHED" | grep -v "keepalive" | sort -k7;
+#   ESTABLISHED keepalive - established
+    echo -e "$data" | grep -e "ESTAB" -e "ESTABLISHED" | grep -v "uid" | sort -k7;
+#	FIN-WAIT-1 - fin-wait-1
+    echo -e "$data" | grep -e "FIN-WAIT-1" -e "FIN_WAIT_1" -e "FIN_WAIT1" | sort -k7;
+#	FIN-WAIT-2 - fin-wait-2
+    echo -e "$data" | grep -e "FIN-WAIT-2" -e "FIN_WAIT_2" -e "FIN_WAIT2"| sort -k7;
+#	CLOSE-WAIT - close-wait
+    echo -e "$data" | grep -e "CLOSE_WAIT" -e "CLOSE-WAIT" | sort -k7;
+#	CLOSING - closing
+    echo -e "$data" | grep "CLOSING" | sort -k7;
+#	LAST-ACK - last-ack
+    echo -e "$data" | grep -e "LAST-ACK" -e "LAST_ACK" | sort -k7;
+#   TIME-WAIT - time-wait
+    echo -e "$data" | grep -e "TIME-WAIT" -e "TIME_WAIT" | sort -k7;
+#	CLOSED - closed
+    echo -e "$data" | grep "CLOSED" | sort -k7;
+    sleep ${1};
+done

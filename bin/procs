@@ -1,0 +1,14 @@
+#!/bin/bash
+#	Process monitor.
+#	usage: procs [sec#] [sort#]
+
+while true;
+	do clear;
+	#	fetch data
+	data=$(ps aux | grep -v "\[");
+	#	print title
+	echo "${data}" | grep "PID";
+	#	print data
+	echo "${data}" | grep -v -e "PID" -e "procs" | sort -k${2};
+	sleep ${1};
+done;

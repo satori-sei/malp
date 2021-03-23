@@ -20,7 +20,7 @@ setup () {
 #   install graphics
     setup-xorg-base xfce4 lightdm-gtk-greeter dbus-x11 xf86-video-intel;
 #   install system apps
-    apk add xf86-input-synaptics xf86-input-mouse xf86-input-keyboard elogind polkit-elogind gvfs-fuse gvfs-smb fuse-openrc thunar-volman udisks2 htop feh konsole dmenu geany mpv firefox-esr xfce4-whiskermenu-plugin neofetch gparted ntfs-3g gvfs-mtp gvfs-gphoto2 gvfs-afc ncdu vlc xrandr py3-pip tcpdump git keepassxc;
+    apk add xf86-input-synaptics xf86-input-mouse xf86-input-keyboard elogind polkit-elogind gvfs-fuse gvfs-smb fuse-openrc thunar-volman udisks2 iputils iproute2 binutils drill htop feh konsole dmenu geany mpv firefox-esr xfce4-whiskermenu-plugin neofetch gparted ntfs-3g gvfs-mtp gvfs-gphoto2 gvfs-afc ncdu vlc xrandr py3-pip tcpdump git keepassxc;
 #   install pip
     pip install youtube-dl;
 #   install flatpak
