@@ -43,4 +43,5 @@ while true;
 	echo "   #  CLOSED";
 	echo "$data" | grep "CLOSED" | sort -n -k9 -r;
 	sleep ${1};
-done
+done;
+exit;

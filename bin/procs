@@ -12,3 +12,4 @@ while true;
 	echo "${data}" | grep -v -e "PID" -e "procs" | sort -k${2};
 	sleep ${1};
 done;
+exit;

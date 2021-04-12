@@ -11,7 +11,7 @@ check-xorg () {
         mv -v /etc/X11/xorg.conf /etc/X11/xorg.bak;
         else
         echo "Xorg conf doesn't exist.";
-    fi
+    fi;
 }
 
 setup () {
@@ -67,15 +67,15 @@ setup () {
 fw () {
 #   modify repo list
     echo -e "http://dl-cdn.alpinelinux.org/alpine/v3.12/main\nhttp://dl-cdn.alpinelinux.org/alpine/v3.12/community\n#http://dl-cdn.alpinelinux.org/alpine/edge/main\nhttp://dl-cdn.alpinelinux.org/alpine/edge/community\n#http://dl-cdn.alpinelinux.org/alpine/edge/testing" > /etc/apk/repositories & echo "Adding edge/testing to repository list...";
-    echo "Updating repository list";
+    echo "Updating repository list...";
     apk update;
 
     echo "Installing ufw.";
     apk add iptables ip6tables ufw;
-    ufw default deny incoming;
-    ufw default deny outgoing;
 
     echo "Setting up basic firewall rules.";
+    ufw default deny incoming;
+    ufw default deny outgoing;
     ufw allow out 123/udp;       # allow outgoing NTP (Network Time Protocol)
     ufw allow out DNS;           # allow outgoing DNS
     ufw allow out 80/tcp;        # allow outgoing HTTP traffic

@@ -18,7 +18,7 @@ setup () {
 #   edit repo list
     echo -e "http://dl-cdn.alpinelinux.org/alpine/v3.12/main\nhttp://dl-cdn.alpinelinux.org/alpine/v3.12/community\n#http://dl-cdn.alpinelinux.org/alpine/edge/main\n#http://dl-cdn.alpinelinux.org/alpine/edge/community\n#http://dl-cdn.alpinelinux.org/alpine/edge/testing" > /etc/apk/repositories & echo "Adding community to repository list...";
 #   update repo
-    echo "Updating repository list";
+    echo "Updating repository list...";
     apk update;
 #   install sudo vim bash vbox-guest-additions
     apk add sudo vim bash virtualbox-guest-additions virtualbox-guest-modules-virt;
